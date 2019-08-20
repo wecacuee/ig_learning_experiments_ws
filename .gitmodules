@@ -1,0 +1,12 @@
+[submodule "src/alglib"]
+	path = src/alglib
+	url = https://bitbucket.org/castacks/alglib.git
+[submodule "src/ig_learning"]
+	path = src/ig_learning
+	url = git@bitbucket.org:sanjiban/ig_learning.git
+[submodule "src/ig_learning_experiments"]
+	path = src/ig_learning_experiments
+	url = https://bitbucket.org/sanjiban/ig_learning_experiments.git
+[submodule "src/rpg_ig_active_reconstruction"]
+	path = src/rpg_ig_active_reconstruction
+	url = git@github.com:wecacuee/rpg_ig_active_reconstruction.git
