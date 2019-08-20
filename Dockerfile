@@ -9,6 +9,7 @@ RUN apt-get update \
       libeigen3-dev \
       libpcl-dev \
       python-catkin-tools \
+      python-wstool \
       ros-kinetic-angles \
       ros-kinetic-gazebo-ros-control \
       ros-kinetic-gazebo-ros-pkgs \
@@ -17,10 +18,20 @@ RUN apt-get update \
       ros-kinetic-stereo-image-proc \
       ros-kinetic-tf \
       ros-kinetic-tf-conversions \
+      ros-kinetic-xacro \
+      openssh-client \
     && \
     rm -rf /var/lib/apt/lists/*
+RUN mkdir ~/.ssh && echo "StrictHostKeyChecking no " > ~/.ssh/config
+RUN mkdir -p $CATKIN_WS/src && \
+    cd $CATKIN_WS/src && \
+    git clone --recursive https://bitbucket.org/sanjiban/ig_learning_experiments.git && \
+    git clone --recursive https://bitbucket.org/sanjiban/ig_learning.git && \
+    git clone --recursive --branch fix-octomap-1.7-to-1.8 https://github.com/wecacuee/rpg_ig_active_reconstruction.git && \
+    git clone --recursive https://bitbucket.org/castacks/alglib.git
 
-RUN mkdir $CATKIN_WS && cd $CATKIN_WS && \
+ENV PYTHONIOENCODING UTF-8
+RUN cd $CATKIN_WS && \
     catkin config --init --mkdirs --extend /opt/ros/kinetic && \
-    rosdep install -y -a
+    catkin build
 
