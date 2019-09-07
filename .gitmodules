@@ -10,3 +10,6 @@
 [submodule "src/rpg_ig_active_reconstruction"]
 	path = src/rpg_ig_active_reconstruction
 	url = git@github.com:wecacuee/rpg_ig_active_reconstruction.git
+[submodule "data/matlab_learning_info_gain_dataset"]
+	path = data/matlab_learning_info_gain_dataset
+	url = https://bitbucket.org/sanjiban/matlab_learning_info_gain_dataset.git

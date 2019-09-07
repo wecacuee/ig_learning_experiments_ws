@@ -1,4 +1,4 @@
-FROM ros:kinetic-ros-core-xenial
+FROM ros:melodic-perception-bionic
 
 ENV CATKIN_WS /root/catkin_ws
 
@@ -10,15 +10,15 @@ RUN apt-get update \
       libpcl-dev \
       python-catkin-tools \
       python-wstool \
-      ros-kinetic-angles \
-      ros-kinetic-gazebo-ros-control \
-      ros-kinetic-gazebo-ros-pkgs \
-      ros-kinetic-octomap \
-      ros-kinetic-pcl-ros  \
-      ros-kinetic-stereo-image-proc \
-      ros-kinetic-tf \
-      ros-kinetic-tf-conversions \
-      ros-kinetic-xacro \
+      ros-$ROS_DISTRO-angles \
+      ros-$ROS_DISTRO-gazebo-ros-control \
+      ros-$ROS_DISTRO-gazebo-ros-pkgs \
+      ros-$ROS_DISTRO-octomap \
+      ros-$ROS_DISTRO-pcl-ros  \
+      ros-$ROS_DISTRO-stereo-image-proc \
+      ros-$ROS_DISTRO-tf \
+      ros-$ROS_DISTRO-tf-conversions \
+      ros-$ROS_DISTRO-xacro \
       openssh-client \
     && \
     rm -rf /var/lib/apt/lists/*
@@ -32,6 +32,6 @@ RUN mkdir -p $CATKIN_WS/src && \
 
 ENV PYTHONIOENCODING UTF-8
 RUN cd $CATKIN_WS && \
-    catkin config --init --mkdirs --extend /opt/ros/kinetic && \
+    catkin config --init --mkdirs --extend /opt/ros/$ROS_DISTRO && \
     catkin build
 
