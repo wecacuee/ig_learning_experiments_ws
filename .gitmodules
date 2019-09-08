@@ -6,7 +6,8 @@
 	url = git@bitbucket.org:sanjiban/ig_learning.git
 [submodule "src/ig_learning_experiments"]
 	path = src/ig_learning_experiments
-	url = https://bitbucket.org/sanjiban/ig_learning_experiments.git
+	url = git@bitbucket.org:wecacuee/ig_learning_experiments.git
+    branch = master
 [submodule "src/rpg_ig_active_reconstruction"]
 	path = src/rpg_ig_active_reconstruction
 	url = git@github.com:wecacuee/rpg_ig_active_reconstruction.git
