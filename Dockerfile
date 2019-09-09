@@ -20,6 +20,7 @@ RUN apt-get update \
       ros-$ROS_DISTRO-tf-conversions \
       ros-$ROS_DISTRO-xacro \
       openssh-client \
+      openssh-server \
     && \
     rm -rf /var/lib/apt/lists/*
 RUN mkdir ~/.ssh && echo "StrictHostKeyChecking no " > ~/.ssh/config
@@ -28,10 +29,13 @@ RUN mkdir -p $CATKIN_WS/src && \
     git clone --recursive https://bitbucket.org/sanjiban/ig_learning_experiments.git && \
     git clone --recursive https://bitbucket.org/sanjiban/ig_learning.git && \
     git clone --recursive --branch fix-octomap-1.7-to-1.8 https://github.com/wecacuee/rpg_ig_active_reconstruction.git && \
-    git clone --recursive https://bitbucket.org/castacks/alglib.git
+    git clone --recursive https://bitbucket.org/castacks/alglib.git && \
+    git clone --recursive https://github.com/wecacuee/gazebo-room-with-furniture.git
 
 ENV PYTHONIOENCODING UTF-8
 RUN cd $CATKIN_WS && \
     catkin config --init --mkdirs --extend /opt/ros/$ROS_DISTRO && \
     catkin build
+
+CMD [/usr/sbin/sshd -D]
 
