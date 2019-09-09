@@ -5,9 +5,12 @@ ENV CATKIN_WS /root/catkin_ws
 RUN apt-get update \
     && \
     apt-get install -y \
+      sudo \
       libboost-all-dev \
       libeigen3-dev \
       libpcl-dev \
+      python3-pip \
+      python3-virtualenv \
       python-catkin-tools \
       python-wstool \
       ros-$ROS_DISTRO-angles \
