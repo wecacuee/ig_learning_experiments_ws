@@ -22,8 +22,8 @@ RUN apt-get update \
       ros-$ROS_DISTRO-tf \
       ros-$ROS_DISTRO-tf-conversions \
       ros-$ROS_DISTRO-xacro \
+      ros-$ROS_DISTRO-rviz \
       openssh-client \
-      openssh-server \
     && \
     rm -rf /var/lib/apt/lists/*
 RUN mkdir ~/.ssh && echo "StrictHostKeyChecking no " > ~/.ssh/config
@@ -40,5 +40,26 @@ RUN cd $CATKIN_WS && \
     catkin config --init --mkdirs --extend /opt/ros/$ROS_DISTRO && \
     catkin build
 
-CMD [/usr/sbin/sshd -D]
+RUN pip3 install --no-cache-dir -r $CATKIN_WS/src/gazebo-room-with-furniture/models/ikea_models/pip-requirements.txt
+
+RUN echo '#!/bin/bash \n\
+source $CATKIN_WS/devel/setup.bash \n\
+source $CATKIN_WS/src/gazebo-room-with-furniture/setup.bash \n\
+echo "Checking for dirs" 1>&2; \n\
+[ -d "$IKEA_MESHES_DIR" ] || { echo "Need IKEA_MESHES_DIR" 1>&2 && false; }\n\
+[ -d "$IG_LEARNING_DATA_DIR" ] || { echo "Need IG_LEARNING_DATA_DIR" 1>&2 && false; } \n\
+cd $CATKIN_WS/src/gazebo-room-with-furniture/models/ikea_models \n\
+rm -f meshes \n\
+ln -s $IKEA_MESHES_DIR meshes \n\
+echo "Creating meshes" 1>&2; \n\
+cd $CATKIN_WS/src/gazebo-room-with-furniture/models/ && python3 ikea_models/create_models.py && cd -\n\
+echo "Running cmd" "$@" 1>&2; \n\
+exec "$@" \n\
+echo "Done cmd" "$@" 1>&2; \n\
+' > /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+WORKDIR $CATKIN_WS
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["roslaunch", "ig_learning_experiments", "example_aggrevate.launch"]
 
