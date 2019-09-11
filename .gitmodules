@@ -3,7 +3,7 @@
 	url = https://bitbucket.org/castacks/alglib.git
 [submodule "src/ig_learning"]
 	path = src/ig_learning
-	url = git@bitbucket.org:sanjiban/ig_learning.git
+	url = git@bitbucket.org:wecacuee/ig_learning.git
 [submodule "src/ig_learning_experiments"]
 	path = src/ig_learning_experiments
 	url = git@bitbucket.org:wecacuee/ig_learning_experiments.git

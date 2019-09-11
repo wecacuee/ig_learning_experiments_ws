@@ -6,6 +6,7 @@ RUN apt-get update \
     && \
     apt-get install -y \
       sudo \
+      gdb \
       libboost-all-dev \
       libeigen3-dev \
       libpcl-dev \
