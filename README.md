@@ -62,14 +62,21 @@ cd <root>
 source setup.bash
 ```
 
-4.5 Generate point clouds from `worlds%d.sdf`
+4.5 Generate point clouds from `worlds%d.sdf`.
 
+[[Follow Instructions here.][./src/ig_learning_experiments/py/create_view_space.py]]
 
-4.6 Roslaunch example_aggrevate.launch
+4.6. Roslaunch example_aggrevate.launch
 
 This will do the training
 ``` shellsession
 roslaunch ig_learning_experiments example_aggrevate.launch
+```
+
+For testing
+
+``` shellsession
+roslaunch ig_learning_experiments example_test_online_policy.launch
 ```
 
 
