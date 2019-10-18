@@ -7,5 +7,5 @@ docker run -it -v $HOME:$HOME --entrypoint=bash \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e HOME -e DISPLAY -e TERM --runtime nvidia \
     -v /tmp/emacs$UID/:/tmp/emacs$UID/ \
-    --name ros_melodic_ig_learning_reconstruction_2 \
+    --name ros_melodic_ig_learning_reconstruction \
     ros_melodic_ig_learning_reconstruction

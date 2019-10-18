@@ -28,6 +28,7 @@ RUN apt-get update \
     && \
     rm -rf /var/lib/apt/lists/*
 RUN mkdir ~/.ssh && echo "StrictHostKeyChecking no " > ~/.ssh/config
+RUN umask 0000
 RUN mkdir -p $CATKIN_WS/src && \
     cd $CATKIN_WS/src && \
     git clone --recursive https://bitbucket.org/sanjiban/ig_learning_experiments.git && \
@@ -42,6 +43,8 @@ RUN cd $CATKIN_WS && \
     catkin build
 
 RUN pip3 install --no-cache-dir -r $CATKIN_WS/src/gazebo-room-with-furniture/models/ikea_models/pip-requirements.txt
+
+RUN umask 0002
 
 RUN echo '#!/bin/bash \n\
 source $CATKIN_WS/devel/setup.bash \n\
