@@ -64,7 +64,7 @@ source setup.bash
 
 4.5 Generate point clouds from `worlds%d.sdf`.
 
-[[Follow Instructions here.][./src/ig_learning_experiments/py/create_view_space.py]]
+[Follow Instructions here.](./src/ig_learning_experiments/py/create_view_space.py])
 
 4.6. Roslaunch example_aggrevate.launch
 
