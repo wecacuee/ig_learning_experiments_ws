@@ -41,7 +41,7 @@ source src/ig_learning_experiments/setup.bash
 $ catkin build
 ```
 
-4.4. Download and generate ikea models.  [[Follow instructions here.][./src/gazebo-room-with-furniture/models/ikea_models/README.md]]
+4.4. Download and generate ikea models.  [Follow instructions here.](./src/gazebo-room-with-furniture/models/ikea_models/README.md)
 
 ``` shellsession
 source ./src/gazebo-room-with-furniture/setup.bash
