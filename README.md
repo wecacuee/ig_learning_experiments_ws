@@ -6,7 +6,12 @@ echo "DOCKERLOGIN_IMAGE=docker.cogrob.com/ros_melodic_ig_learning_experiments_en
 cogrob_dockerlogin ig
 ```
 
-2. Run the initial setup script.
+2. Clone the repo.
+```
+git clone --recursive git@github.com:wecacuee/ig_learning_experiments_ws.git
+```
+
+3. Run the initial setup script.
 ```
 ./initial_setup.sh
 ```
@@ -21,15 +26,15 @@ ls $IKEA_MODELS_DATASET_DIR
 >> all_obj.txt IKEA_bed_BEDDINGE IKEA_bed_BIRKELAND IKEA_bed_BRIMNES ...
 ```
 
-3. Generate random worlds if not using a prebuild IG_LEARNING_DATA_DIR. Follow the instructions below.
+4. Generate random worlds if not using a prebuild IG_LEARNING_DATA_DIR. Follow the instructions below.
 
-4. Build the catkin workspace.
+5. Build the catkin workspace.
 
 ```
 catkin build
 ```
 
-5. Run example_aggrevate.
+6. Run example_aggrevate.
 ```
 source setup.bash
 # This will do the training
