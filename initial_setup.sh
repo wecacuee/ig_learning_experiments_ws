@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -31,7 +31,7 @@ done
 
 # Decide on a IG_LEARNING_DATA_DIR.
 # Edit src/ig_learning_experiments/envrc, one time only.
-echo "IG_LEARNING_DATA_DIR=\'$input_ig_learning_data_dir\'" > $SCRIPT_PATH/src/ig_learning_experiments/envrc
+echo "IG_LEARNING_DATA_DIR='$input_ig_learning_data_dir'" > $SCRIPT_PATH/src/ig_learning_experiments/envrc
 
 ################################################################################
 # Sets and remembers IKEA_MODELS_DATASET_DIR.
@@ -45,7 +45,7 @@ while [ -z "$input_ikea_models_dataset_dir" ]; do
     echo "Directory not found: $input_ikea_models_dataset_dir"
     input_ikea_models_dataset_dir=""
   fi
-  if [ ! -d $input_ikea_models_dataset_dir/IKEA_desk_VIKA/obj_list.txt ]; then
+  if [ ! -e $input_ikea_models_dataset_dir/IKEA_desk_VIKA/obj_list.txt ]; then
     echo "Wrong directory, IKEA_desk_VIKA/obj_list.txt not in $input_ikea_models_dataset_dir"
     input_ikea_models_dataset_dir=""
   fi
@@ -53,7 +53,7 @@ done
 
 # Decide on a ikea_models_dataset_dir.
 # Edit src/ig_learning_experiments/envrc, one time only.
-echo "IKEA_MODELS_DATASET_DIR=\'$input_ikea_models_dataset_dir\'" > $SCRIPT_PATH/src/gazebo-room-with-furniture/envrc
+echo "IKEA_MODELS_DATASET_DIR='$input_ikea_models_dataset_dir'" > $SCRIPT_PATH/src/gazebo-room-with-furniture/envrc
 
 ################################################################################
 # Builds IKEA meshes.
