@@ -1,3 +1,44 @@
+# Updated and Simplified Instructions
+
+1. Use `cogrob_dockerlogin` to enter an enviroment for this experiment.
+```
+echo "DOCKERLOGIN_IMAGE=docker.cogrob.com/ros_melodic_ig_learning_experiments_env" > $HOME/.dockerloginrc_ig
+cogrob_dockerlogin ig
+```
+
+2. Run the initial setup script.
+```
+./initial_setup.sh
+```
+
+Be prepare to offer IG_LEARNING_DATA_DIR and IKEA_MODELS_DATASET_DIR.
+
+```
+ls $IG_LEARNING_DATA_DIR
+>> learnt_predictors parameters precomputed_expert test train worlds
+
+ls $IKEA_MODELS_DATASET_DIR
+>> all_obj.txt IKEA_bed_BEDDINGE IKEA_bed_BIRKELAND IKEA_bed_BRIMNES ...
+```
+
+3. Generate random worlds if not using a prebuild IG_LEARNING_DATA_DIR. Follow the instructions below.
+
+4. Build the catkin workspace.
+
+```
+catkin build
+```
+
+5. Run example_aggrevate.
+```
+source setup.bash
+# This will do the training
+roslaunch ig_learning_experiments example_aggrevate.launch
+
+# For testing
+roslaunch ig_learning_experiments example_test_online_policy.launch
+```
+
 # Running example_aggrevate.launch
 
 1. Clone the repository
@@ -78,6 +119,3 @@ For testing
 ``` shellsession
 roslaunch ig_learning_experiments example_test_online_policy.launch
 ```
-
-
-
